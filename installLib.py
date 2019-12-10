@@ -18,6 +18,10 @@ def runIfPathMissing(thePath, theCommand):
 		print("Running: " + theCommand)
 		os.system(theCommand)
 
+# Set up globals to hold Python details.
+pythonHome = ""
+pipExe = ""
+
 # Make sure Pip is installed, then check for individual Python modules.
 if os.name == "nt":
 	pythonHome = sys.executable.rsplit(os.sep, 1)[0]
@@ -27,9 +31,6 @@ if os.name == "nt":
 		writeFile("get-pip.py", response.read())
 		os.system("py get-pip.py")
 		os.remove("get-pip.py")
-	# Make sure PExpect is installed.
-	runIfPathMissing(pythonHome + os.sep + "Lib" + os.sep + "site-packages" + os.sep + "pexpect", "\"" + pipExe + "\" install pexpect")
-import pexpect
 
 # Set up a couple of globals to hold user options.
 validValueOptions = []
