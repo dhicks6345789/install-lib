@@ -7,11 +7,33 @@ import shutil
 
 # Find where this .py file is running from.
 rootPath = sys.argv[0][0:sys.argv[0].rfind(os.sep)]
+validValueOptions = []
+userOptions = {}
+
+# If the given option name has been set on the command line, simply returns that value as a string.
+# Otherwise, asks the user for a value via interactive input and returns that value as a string.
+def getUserOption(optionName, theMessage):
+	# Parse any options set by the user on the command line.
+	if userOptions == {}:
+		validBooleanOptions = []
+		optionCount = 1
+		while optionCount < len(sys.argv):
+			if sys.argv[optionCount] in validBooleanOptions:
+				userOptions[sys.argv[optionCount]] = True
+			elif sys.argv[optionCount] in validValueOptions:
+				userOptions[sys.argv[optionCount]] = sys.argv[optionCount+1]
+				optionCount = optionCount + 1
+			optionCount = optionCount + 1
+	if not optionName in userOptions.keys():
+		userOptions[optionName] = input(theMessage + ": ")
+	return(userOptions[optionName])
 
 # Utility function to convert Unix-style path strings to Windows ones.
 def toWindowsPath(thePath):
 	return(thePath.replace("/", "\\"))
 
+# Runs the given command only if the given path is missing. Handy for "run this command to install
+# X if it isn't installed yet" type commands.
 def runIfPathMissing(thePath, theCommand):
 	if not os.path.exists(thePath):
 		print("Running: " + theCommand)
