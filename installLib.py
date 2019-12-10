@@ -5,18 +5,13 @@ import ssl
 import shutil
 import urllib.request
 
-# Find where this .py file is running from.
-rootPath = sys.argv[0][0:sys.argv[0].rfind(os.sep)]
-
 # Handy utility function to write a file.
 def writeFile(theFilename, theFileData):
 	fileDataHandle = open(theFilename, "wb")
 	fileDataHandle.write(theFileData)
 	fileDataHandle.close()
 
-print(sys.path)
-print(rootPath)
-print(os.environ["PYTHONPATH"])
+print(sys.executable)
 
 # Make sure Pip is installed.
 if os.name == "nt":
