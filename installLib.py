@@ -11,6 +11,8 @@ def writeFile(theFilename, theFileData):
 	fileDataHandle.write(theFileData)
 	fileDataHandle.close()
 
+userHome = os.path.expanduser("~")
+
 # Set up globals to hold Python details.
 pythonHome = ""
 pipExe = ""
