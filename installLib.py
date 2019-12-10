@@ -28,17 +28,19 @@ if os.name == "nt":
 		os.remove("get-pip.py")
 
 # Set up a couple of globals to hold user options.
-validValueOptions = []
 userOptions = {}
+validValueOptions = []
+validBooleanOptions = []
 
 # If the given option name has been set on the command line, simply returns that value as a string.
 # Otherwise, asks the user for a value via interactive input and returns that value as a string.
 def getUserOption(optionName, theMessage):
 	# Parse any options set by the user on the command line.
 	if userOptions == {}:
-		validBooleanOptions = []
 		optionCount = 1
+		print(sys.argv)
 		while optionCount < len(sys.argv):
+			print(sys.argv[optionCount])
 			if sys.argv[optionCount] in validBooleanOptions:
 				userOptions[sys.argv[optionCount]] = True
 			elif sys.argv[optionCount] in validValueOptions:
