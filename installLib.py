@@ -18,7 +18,7 @@ def runIfPathMissing(thePath, theCommand):
 		print("Running: " + theCommand)
 		os.system(theCommand)
 
-# Make sure Pip is installed.
+# Make sure Pip is installed, then check for individual Python modules.
 if os.name == "nt":
 	pythonHome = sys.executable.rsplit(os.sep, 1)[0]
 	pipExe = pythonHome + os.sep + "Scripts" + os.sep + "pip.exe"
@@ -27,6 +27,7 @@ if os.name == "nt":
 		writeFile("get-pip.py", response.read())
 		os.system("py get-pip.py")
 		os.remove("get-pip.py")
+	# Make sure PExpect is installed.
 	runIfPathMissing(pythonHome + os.sep + "Lib" + os.sep + "site-packages" + os.sep + "pexpect", "\"" + pipExe + "\" install pexpect")
 import pexpect
 
@@ -99,8 +100,3 @@ def replaceVariables(theFile, theKeyValues):
 	for keyValue in theKeyValues.keys():
 		fileData = fileData.replace("<<" + keyValue + ">>", theKeyValues[keyValue])
 	writeFile(theFile, fileData)
-	
-def runExpect(inputArray):
-	writeFile("temp.expect", inputArray)
-	os.system("expect temp.expect")
-	os.system("rm temp.expect")
