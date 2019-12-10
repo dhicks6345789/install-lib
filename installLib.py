@@ -14,6 +14,8 @@ def writeFile(theFilename, theFileData):
 	fileDataHandle.write(theFileData)
 	fileDataHandle.close()
 
+print(sys.path)
+print(rootPath)
 print(os.environ["PYTHONPATH"])
 
 # Make sure Pip is installed.
