@@ -20,7 +20,7 @@ if os.name == "nt":
 		writeFile("get-pip.py", response.read())
 		os.system("py get-pip.py")
 		os.remove("get-pip.py")
-	os.system(pipExe)
+	os.system("\"" + pipExe + "\"")
 #import pexpect
 
 # Set up a couple of globals to hold user options.
