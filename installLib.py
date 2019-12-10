@@ -39,6 +39,7 @@ def getUserOption(optionName, theMessage):
 	if userOptions == {}:
 		optionCount = 1
 		while optionCount < len(sys.argv):
+			print(sys.argv[optionCount])
 			if sys.argv[optionCount] in validBooleanOptions:
 				userOptions[sys.argv[optionCount]] = True
 			elif sys.argv[optionCount] in validValueOptions:
