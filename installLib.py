@@ -2,11 +2,22 @@
 import os
 import sys
 import shutil
+import urllib.request
 
 # A library for building install scripts.
 
 # Find where this .py file is running from.
 rootPath = sys.argv[0][0:sys.argv[0].rfind(os.sep)]
+
+# Make sure Pip is installed.
+if os.name == "nt":
+	if not os.path.exists("pip"):
+		urllib.request.urlretrieve("https://bootstrap.pypa.io/get-pip.py", "get-pip.py")
+		os.system("py get-pip.py")
+		os.remove("get-pip.py")
+#import pexpect
+
+# Set up a couple of globals to hold user options.
 validValueOptions = []
 userOptions = {}
 
