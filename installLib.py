@@ -14,7 +14,7 @@ rootPath = sys.argv[0][0:sys.argv[0].rfind(os.sep)]
 if os.name == "nt":
 	if not os.path.exists("pip"):
 		response = urllib.request.urlopen("https://bootstrap.pypa.io/get-pip.py", context=ssl._create_unverified_context())
-		print(response)
+		writeFile("get-pip.py", response.read())
 		os.system("py get-pip.py")
 		os.remove("get-pip.py")
 #import pexpect
