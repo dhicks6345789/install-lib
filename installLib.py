@@ -14,9 +14,11 @@ def writeFile(theFilename, theFileData):
 	fileDataHandle.write(theFileData)
 	fileDataHandle.close()
 
+print(os.environ["PYTHONPATH"])
+
 # Make sure Pip is installed.
 if os.name == "nt":
-	if not os.path.exists("pip"):
+	if not os.path.exists("C:\Program Files\Python38\Scripts\pip.exe"):
 		response = urllib.request.urlopen("https://bootstrap.pypa.io/get-pip.py", context=ssl._create_unverified_context())
 		writeFile("get-pip.py", response.read())
 		os.system("py get-pip.py")
