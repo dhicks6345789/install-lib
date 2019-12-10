@@ -45,6 +45,7 @@ def getUserOption(optionName, theMessage):
 				userOptions[sys.argv[optionCount]] = sys.argv[optionCount+1]
 				optionCount = optionCount + 1
 			optionCount = optionCount + 1
+	print(userOptions)
 	if not optionName in userOptions.keys():
 		userOptions[optionName] = input(theMessage + ": ")
 	return(userOptions[optionName])
