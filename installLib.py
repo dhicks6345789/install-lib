@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import os
 import sys
+import ssl
 import shutil
 import urllib.request
 
@@ -12,7 +13,7 @@ rootPath = sys.argv[0][0:sys.argv[0].rfind(os.sep)]
 # Make sure Pip is installed.
 if os.name == "nt":
 	if not os.path.exists("pip"):
-		urllib.request.urlretrieve("https://bootstrap.pypa.io/get-pip.py", "get-pip.py")
+		urllib.request.urlretrieve("https://bootstrap.pypa.io/get-pip.py", "get-pip.py", context=ssl._create_unverified_context())
 		os.system("py get-pip.py")
 		os.remove("get-pip.py")
 #import pexpect
