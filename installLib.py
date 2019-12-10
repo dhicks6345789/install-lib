@@ -10,13 +10,6 @@ def writeFile(theFilename, theFileData):
 	fileDataHandle = open(theFilename, "wb")
 	fileDataHandle.write(theFileData)
 	fileDataHandle.close()
-	
-# Runs the given command only if the given path is missing. Handy for "run this command to install
-# X if it isn't installed yet" type commands.
-def runIfPathMissing(thePath, theCommand):
-	if not os.path.exists(thePath):
-		print("Running: " + theCommand)
-		os.system(theCommand)
 
 # Set up globals to hold Python details.
 pythonHome = ""
@@ -53,6 +46,13 @@ def getUserOption(optionName, theMessage):
 	if not optionName in userOptions.keys():
 		userOptions[optionName] = input(theMessage + ": ")
 	return(userOptions[optionName])
+
+# Runs the given command only if the given path is missing. Handy for "run this command to install
+# X if it isn't installed yet" type commands.
+def runIfPathMissing(thePath, theCommand):
+	if not os.path.exists(thePath):
+		print("Running: " + theCommand)
+		os.system(theCommand)
 
 # Utility function to convert Unix-style path strings to Windows ones.
 def toWindowsPath(thePath):
