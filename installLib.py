@@ -5,10 +5,14 @@ import ssl
 import shutil
 import urllib.request
 
-# A library for building install scripts.
-
 # Find where this .py file is running from.
 rootPath = sys.argv[0][0:sys.argv[0].rfind(os.sep)]
+
+# Handy utility function to write a file.
+def writeFile(theFilename, theFileData):
+	fileDataHandle = open(theFilename, "wb")
+	fileDataHandle.write(theFileData)
+	fileDataHandle.close()
 
 # Make sure Pip is installed.
 if os.name == "nt":
@@ -89,11 +93,6 @@ def readFile(theFilename):
 	fileData = fileDataHandle.read()
 	fileDataHandle.close()
 	return(fileData)
-    
-def writeFile(theFilename, theFileData):
-	fileDataHandle = open(theFilename, "wb")
-	fileDataHandle.write(theFileData)
-	fileDataHandle.close()
 
 def replaceVariables(theFile, theKeyValues):
 	fileData = readFile(theFile)
