@@ -14,18 +14,18 @@ def toWindowsPath(thePath):
 
 def runIfPathMissing(thePath, theCommand):
 	if not os.path.exists(thePath):
-		print "Running: " + theCommand
+		print("Running: " + theCommand)
 		os.system(theCommand)
 
 def mkdir(theDir):
 	if not os.path.exists(theDir):
-		print "Creating " + theDir
+		print("Creating " + theDir)
 		os.makedirs(theDir)
 
 def copyfile(src, dest, mode=None):
 	srcStat = os.stat(src)
 	if (not os.path.exists(dest)) or (not str(srcStat.st_mtime) == str(os.stat(dest).st_mtime)):
-		print "Copying file " + src + " to " + dest
+		print("Copying file " + src + " to " + dest)
 		shutil.copyfile(src, dest)
 		os.utime(dest, (srcStat.st_atime, srcStat.st_mtime))
 		if not mode == None:
@@ -34,7 +34,7 @@ def copyfile(src, dest, mode=None):
 	return(0)
 
 def copyfolder(srcFolder, destFolder):
-	print "Copying folder " + srcFolder + " to " + destFolder
+	print("Copying folder " + srcFolder + " to " + destFolder)
 	if not os.path.isdir(destFolder):
 	mkdir(destFolder)
 	for item in os.listdir(srcFolder):
