@@ -36,7 +36,7 @@ def copyfile(src, dest, mode=None):
 def copyfolder(srcFolder, destFolder):
 	print("Copying folder " + srcFolder + " to " + destFolder)
 	if not os.path.isdir(destFolder):
-	mkdir(destFolder)
+		mkdir(destFolder)
 	for item in os.listdir(srcFolder):
 		if os.path.isfile(srcFolder + os.sep + item):
 			copyfile(srcFolder + os.sep + item, destFolder + os.sep + item)
