@@ -11,6 +11,13 @@ def writeFile(theFilename, theFileData):
 	fileDataHandle.write(theFileData)
 	fileDataHandle.close()
 	
+# Runs the given command only if the given path is missing. Handy for "run this command to install
+# X if it isn't installed yet" type commands.
+def runIfPathMissing(thePath, theCommand):
+	if not os.path.exists(thePath):
+		print("Running: " + theCommand)
+		os.system(theCommand)
+
 # Make sure Pip is installed.
 if os.name == "nt":
 	pythonHome = sys.executable.rsplit(os.sep, 1)[0]
@@ -20,8 +27,8 @@ if os.name == "nt":
 		writeFile("get-pip.py", response.read())
 		os.system("py get-pip.py")
 		os.remove("get-pip.py")
-	os.system("\"" + pipExe + "\" install pexpect")
-#import pexpect
+	runIfPathMissing(pythonHome + os.sep + "Lib" + "os.sep" + site-packages + os.sep + "pexpect", "\"" + pipExe + "\" install pexpect")
+import pexpect
 
 # Set up a couple of globals to hold user options.
 validValueOptions = []
@@ -48,13 +55,6 @@ def getUserOption(optionName, theMessage):
 # Utility function to convert Unix-style path strings to Windows ones.
 def toWindowsPath(thePath):
 	return(thePath.replace("/", "\\"))
-
-# Runs the given command only if the given path is missing. Handy for "run this command to install
-# X if it isn't installed yet" type commands.
-def runIfPathMissing(thePath, theCommand):
-	if not os.path.exists(thePath):
-		print("Running: " + theCommand)
-		os.system(theCommand)
 
 def mkdir(theDir):
 	if not os.path.exists(theDir):
