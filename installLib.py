@@ -27,7 +27,7 @@ if os.name == "nt":
 		writeFile("get-pip.py", response.read())
 		os.system("py get-pip.py")
 		os.remove("get-pip.py")
-	runIfPathMissing(pythonHome + os.sep + "Lib" + "os.sep" + site-packages + os.sep + "pexpect", "\"" + pipExe + "\" install pexpect")
+	runIfPathMissing(pythonHome + os.sep + "Lib" + os.sep + "site-packages" + os.sep + "pexpect", "\"" + pipExe + "\" install pexpect")
 import pexpect
 
 # Set up a couple of globals to hold user options.
