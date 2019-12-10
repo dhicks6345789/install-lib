@@ -87,3 +87,8 @@ def replaceVariables(theFile, theKeyValues):
 	for keyValue in theKeyValues.keys():
 		fileData = fileData.replace("<<" + keyValue + ">>", theKeyValues[keyValue])
 	writeFile(theFile, fileData)
+	
+def runExpect(inputArray):
+	writeFile("temp.expect", inputArray)
+	os.system("expect temp.expect")
+	os.system("rm temp.expect")
