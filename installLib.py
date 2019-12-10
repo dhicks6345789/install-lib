@@ -37,7 +37,6 @@ validBooleanOptions = []
 def getUserOption(optionName, theMessage):
 	# Parse any options set by the user on the command line.
 	if userOptions == {}:
-		print(validValueOptions)
 		optionCount = 1
 		while optionCount < len(sys.argv):
 			print(sys.argv[optionCount])
@@ -47,7 +46,6 @@ def getUserOption(optionName, theMessage):
 				userOptions[sys.argv[optionCount]] = sys.argv[optionCount+1]
 				optionCount = optionCount + 1
 			optionCount = optionCount + 1
-	print(userOptions)
 	if not optionName in userOptions.keys():
 		userOptions[optionName] = input(theMessage + ": ")
 	return(userOptions[optionName])
