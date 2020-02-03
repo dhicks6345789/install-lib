@@ -17,6 +17,9 @@ userHome = os.path.expanduser("~")
 pythonHome = ""
 pipExe = ""
 
+# Figure out what version of Python we have installed.
+pythonVersion = os.popen("ls /usr/local/lib | grep python3").read().strip()
+
 # Make sure Pip is installed, then check for individual Python modules.
 if os.name == "nt":
 	pythonHome = sys.executable.rsplit(os.sep, 1)[0]
