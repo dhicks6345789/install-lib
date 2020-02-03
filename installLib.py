@@ -27,6 +27,7 @@ pipExe = ""
 pythonVersion = "Unknown"
 if os.name == "nt":
 	for dirLine in runCommand("dir \"C:\\Program Files\""):
+		dirLine = dirLine.split()[3]
 		print(dirLine)
 		if dirLine.lower().startswith("python"):
 			pythonVersion = dirLine.strip()
