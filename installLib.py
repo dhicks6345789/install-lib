@@ -27,10 +27,11 @@ pipExe = ""
 pythonVersion = "Unknown"
 if os.name == "nt":
 	for dirLine in runCommand("dir \"C:\\Program Files\""):
-		dirLine = dirLine.split()[3]
-		print(dirLine)
-		if dirLine.lower().startswith("python"):
-			pythonVersion = dirLine.strip()
+		dirSplit = dirLine.split()
+		if len(dirSplit) > 2:
+			print(dirSplit)
+			if dirSplit[3].lower().startswith("python"):
+				pythonVersion = dirSplit[3].strip()
 else:
 	pythonVersion = os.popen("ls /usr/local/lib | grep python3").read().strip()
 
