@@ -10,6 +10,12 @@ def writeFile(theFilename, theFileData):
 	fileDataHandle = open(theFilename, "wb")
 	fileDataHandle.write(theFileData)
 	fileDataHandle.close()
+	
+def runCommand(theCommand):
+	commandHandle = os.popen(theCommand)
+	result = commandHandle.readlines()
+	commandHandle.close()
+	return(result)
 
 userHome = os.path.expanduser("~")
 
@@ -96,12 +102,6 @@ def copyfolder(srcFolder, destFolder):
 			copyfile(srcFolder + os.sep + item, destFolder + os.sep + item)
 		else:
 			copyfolder(srcFolder + os.sep + item, destFolder + os.sep + item)
-
-def runCommand(theCommand):
-	commandHandle = os.popen(theCommand)
-	result = commandHandle.readlines()
-	commandHandle.close()
-	return(result)
 
 def readFile(theFilename):
 	fileDataHandle = open(theFilename, "rb")
