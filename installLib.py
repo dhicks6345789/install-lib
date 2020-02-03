@@ -8,7 +8,10 @@ import urllib.request
 # Handy utility function to write a file.
 def writeFile(theFilename, theFileData):
 	fileDataHandle = open(theFilename, "wb")
-	fileDataHandle.write(theFileData)
+	if isinstance(theFileData, str):
+		fileDataHandle.write(theFileData.encode())
+	else:
+		fileDataHandle.write(theFileData)
 	fileDataHandle.close()
 	
 def runCommand(theCommand):
