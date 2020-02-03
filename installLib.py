@@ -29,7 +29,6 @@ if os.name == "nt":
 	for dirLine in runCommand("dir \"C:\\Program Files\""):
 		dirSplit = dirLine.split()
 		if len(dirSplit) > 2:
-			print(dirSplit)
 			if dirSplit[3].lower().startswith("python"):
 				pythonVersion = dirSplit[3].strip()
 else:
