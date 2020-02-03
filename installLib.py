@@ -24,9 +24,10 @@ pythonHome = ""
 pipExe = ""
 
 # Figure out what version of Python we have installed.
-pythonVersion = ""
+pythonVersion = "Unknown"
 if os.name == "nt":
 	for dirLine in runCommand("dir \"C:\\Program Files\""):
+		print(dirLine)
 		if dirLine.lower().startswith("python"):
 			pythonVersion = dirLine.strip()
 else:
