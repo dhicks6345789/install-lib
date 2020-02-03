@@ -18,7 +18,13 @@ pythonHome = ""
 pipExe = ""
 
 # Figure out what version of Python we have installed.
-pythonVersion = os.popen("ls /usr/local/lib | grep python3").read().strip()
+pythonVersion = ""
+if os.name == "nt":
+	for dirLine in runCommand("dir \"C:\\Program Files\""):
+		if dirLine.lower().startswith("python"):
+			pythonVersion = dirLine.strip()
+else:
+	pythonVersion = os.popen("ls /usr/local/lib | grep python3").read().strip()
 
 # Make sure Pip is installed, then check for individual Python modules.
 if os.name == "nt":
