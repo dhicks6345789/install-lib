@@ -11,7 +11,8 @@ def writeFile(theFilename, theFileData):
 	if isinstance(theFileData, str):
 		fileDataHandle.write(theFileData.encode())
 	else:
-		fileDataHandle.write(theFileData)
+		for dataLine in theFileData:
+			fileDataHandle.write(dataLine + "\n")
 	fileDataHandle.close()
 	
 def runCommand(theCommand):
