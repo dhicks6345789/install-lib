@@ -12,7 +12,7 @@ def writeFile(theFilename, theFileData):
 		fileDataHandle.write(theFileData.encode())
 	else:
 		for dataLine in theFileData:
-			fileDataHandle.write(dataLine + "\n")
+			fileDataHandle.write(dataLine.encode() + "\n")
 	fileDataHandle.close()
 	
 def runCommand(theCommand):
